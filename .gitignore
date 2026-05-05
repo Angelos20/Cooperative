@@ -1,0 +1,14 @@
+# Build
+build/
+
+# Java
+*.class
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+
+# OS
+.DS_Store
