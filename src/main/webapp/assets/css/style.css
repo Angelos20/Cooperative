@@ -108,7 +108,7 @@ thead th {
     display: inline-block;
     color: #cbd5e1;
     text-decoration: none;
-    padding: 10px 14px;
+    padding: 10px 10px;
     border-radius: 8px;
     transition: 0.3s;
     background: rgba(56,189,248,0.1);
@@ -124,6 +124,7 @@ thead th {
 ======================= */
 
 .container {
+	text-align: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -143,6 +144,11 @@ thead th {
     transition: 0.3s;
     width: 100%;
     overflow-x: auto;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.5),
+        0 0 25px rgba(56,189,248,0.08);
+
+    animation:fadeIn 0.8s ease;
 }
 
 .card:hover {
@@ -202,13 +208,18 @@ button {
     width: 100%;
 }
 
-td button {
+
+.btn_action{
     background-color: transparent;
     width: auto;
     padding: 6px 10px;
     font-size: 12px;
 }
 
+.btn_action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56,189,248,0.3);
+}
 
 button:hover {
     transform: translateY(-2px);

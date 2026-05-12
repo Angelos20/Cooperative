@@ -9,12 +9,73 @@
 <link rel="stylesheet"
 href="${pageContext.request.contextPath}/assets/css/style.css">
 
+<style>
+
+@charset "UTF-8";
+
+/* =======================
+   RESET
+======================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =======================
+   BODY + BACKGROUND
+======================= */
+
+html, body{
+
+    width:100%;
+    min-height:100vh;
+
+    font-family:"Segoe UI", sans-serif;
+
+    color:#e5e7eb;
+
+    background:
+        linear-gradient(
+            rgba(5,10,20,0.78),
+            rgba(5,10,20,0.92)
+        ),
+        url("${pageContext.request.contextPath}/assets/img/voiture.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.table-wrapper{
+
+    max-height:350px;   /* limite la hauteur */
+    overflow-y:auto;    /* scroll vertical */
+    overflow-x:auto;    /* scroll horizontal si besoin */
+
+    border-radius:16px;
+}
+
+.table-wrapper::-webkit-scrollbar{
+    width:6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb{
+    background:#38bdf8;
+    border-radius:10px;
+}
+
+</style>
+
+
 </head>
 
 <body>
 
 <header>
-    <h2>🚀 Cooperative Manager</h2>
+    <h2>Cooperative Manager</h2>
 
     <nav>
         <a href="${pageContext.request.contextPath}/client/client.jsp">Clients</a>
@@ -90,17 +151,21 @@ href="${pageContext.request.contextPath}/assets/css/style.css">
 
         <h3 style="text-align: center;">📊 Etat des Places</h3>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Voiture</th>
-                    <th>Place</th>
-                    <th>Occupation</th>
-                </tr>
-            </thead>
+        <div class="table-wrapper">
 
-            <tbody id="statTable"></tbody>
-        </table>
+		    <table>
+		        <thead>
+		            <tr>
+		                <th>Voiture</th>
+		                <th>Place</th>
+		                <th>Occupation</th>
+		            </tr>
+		        </thead>
+		
+		        <tbody id="statTable"></tbody>
+		    </table>
+		
+		</div>
 
     </div>
 

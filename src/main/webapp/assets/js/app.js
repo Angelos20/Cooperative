@@ -111,8 +111,8 @@ function loadClients(keyword = "") {
                     <td>${c.nom}</td>
                     <td>${c.telephone}</td>
                     <td>
-                        <button class="btn_edit" onclick="editClient('${c.idcli}')">✏️</button>
-                        <button class="btn_delete" onclick="deleteClient('${c.idcli}')">S🗑️</button>
+                        <button class="btn_action" onclick="editClient('${c.idcli}')">✏️</button>
+                        <button class="btn_action" onclick="deleteClient('${c.idcli}')">🗑️</button>
                     </td>
                 </tr>
                 `;

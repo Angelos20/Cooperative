@@ -49,29 +49,37 @@ function loadReservation() {
             const filterEl = document.getElementById("paymentFilter");
             const filtre = filterEl ? filterEl.value : "";
 
+            // 🔥 filtrage
             if (filtre !== "") {
                 data = data.filter(x => x.payment === filtre);
             }
 
+            // 🔥 compteur
+            const counter = document.querySelector("#nbr_reser p");
+            if (counter) {
+                counter.textContent = data.length;
+            }
+
+            // 🔥 tableau
             const table = document.getElementById("reservationTable");
             if (!table) return;
 
             table.innerHTML = data.map(x => `
                 <tr>
-                    <td>${x.idreserv}</td>
-                    <td>${x.idvoit}</td>
-                    <td>${x.idcli}</td>
-                    <td>${x.place}</td>
-                    <td>${x.dateReserv || x.date_reserv}</td>
-                    <td>${x.dateVoyage || x.date_voyage}</td>
-                    <td>${x.payment}</td>
-                    <td>${x.montantAvance || x.montant_avance}</td>
-                    <td>${x.reste}</td>
-					<td>
-					    <button onclick="editReservation('${x.idreserv}')">✏️</button>
-					    <button onclick="deleteReservation('${x.idreserv}')">🗑️</button>
-					    <button onclick="generatePDF('${x.idreserv}')">📄</button>
-					</td>
+                    <td>${x.idreserv ?? ""}</td>
+                    <td>${x.idvoit ?? ""}</td>
+                    <td>${x.idcli ?? ""}</td>
+                    <td>${x.place ?? 0}</td>
+                    <td>${x.dateReserv ?? x.date_reserv ?? ""}</td>
+                    <td>${x.dateVoyage ?? x.date_voyage ?? ""}</td>
+                    <td>${x.payment ?? ""}</td>
+                    <td>${x.montantAvance ?? x.montant_avance ?? 0}</td>
+                    <td>${x.reste ?? 0}</td>
+                    <td>
+                        <button class="btn_action" onclick="editReservation('${x.idreserv}')">✏️</button>
+                        <button class="btn_action" onclick="deleteReservation('${x.idreserv}')">🗑️</button>
+                        <button class="btn_action" onclick="generatePDF('${x.idreserv}')">📄</button>
+                    </td>
                 </tr>
             `).join("");
 
@@ -130,14 +138,6 @@ function addOrUpdateReservation(e) {
 			    showMessage("✅ Opération réussie", "success");
 
 			    const idreserv = getVal("idreserv");
-
-			    // uniquement ajout
-			    if (!isEdit) {
-			        window.open(
-			            "/Cooperative-Manager/pdf/recu?id=" + encodeURIComponent(idreserv),
-			            "_blank"
-			        );
-			    }
 
 			    setTimeout(() => {
 			        window.location.href =
@@ -262,7 +262,6 @@ function editReservation(id) {
     window.location.href =
         "/Cooperative-Manager/reservations/reservationForm.jsp?idreserv=" + id;
 }
-
 function generatePDF(id) {
 
     if (!id) {
@@ -270,8 +269,8 @@ function generatePDF(id) {
         return;
     }
 
-    const url = "/Cooperative-Manager/pdf/recu?id=" + encodeURIComponent(id);
+    const url =
+        "/Cooperative-Manager/pdf/recu?id=" + encodeURIComponent(id);
 
-    // ouvrir dans un nouvel onglet
     window.open(url, "_blank");
 }

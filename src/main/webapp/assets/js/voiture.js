@@ -111,8 +111,8 @@ function loadVoitures(keyword = "") {
                     <td>${v.nbrplace}</td>
                     <td>${v.frais}</td>
                     <td>
-                        <button onclick="editVoiture('${v.idvoit}')">✏️</button>
-                        <button onclick="deleteVoiture('${v.idvoit}')">🗑️</button>
+                        <button class="btn_action" onclick="editVoiture('${v.idvoit}')">✏️</button>
+                        <button class="btn_action" onclick="deleteVoiture('${v.idvoit}')">🗑️</button>
                     </td>
                 </tr>
                 `;
